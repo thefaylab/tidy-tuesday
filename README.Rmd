@@ -1,0 +1,61 @@
+---
+output: github_document
+---
+
+# tidy-tuesday
+
+Repository for lab hacky hours
+
+## 2025-08-26
+
+### Visualizing flounder MSE metrics
+
+Visualize results of the summer flounder MSE using a common results data frame, in `data/MSE_median_metrics.rds`.
+
+#### Data Dictionary
+
++------------+-----------------------+--------------------------------------------------------------------------------------------------------------------------------------+
+| Variable   | Type                  | Description                                                                                                                          |
++============+=======================+======================================================================================================================================+
+| om         | NA                    | not used                                                                                                                             |
++------------+-----------------------+--------------------------------------------------------------------------------------------------------------------------------------+
+| mp         | character             | Management Procedure. One of four candidate MPs:\                                                                                    |
+|            |                       | "BBM" - biomass-based matrix\                                                                                                        |
+|            |                       | "BRP" - biological reference point\                                                                                                  |
+|            |                       | "NCA" - no change approach\                                                                                                          |
+|            |                       | "PCA" - percent change approach                                                                                                      |
++------------+-----------------------+--------------------------------------------------------------------------------------------------------------------------------------+
+| metric     | character             | Name of performance metric or regulation. One of 22 values:                                                                          |
+|            |                       |                                                                                                                                      |
+|            |                       | "bag" - bag limit (number of fish)\                                                                                                  |
+|            |                       | "change_cs" - overall change in consumer surplus\                                                                                    |
+|            |                       | "cs_per_trip" - consumer surplus per trip\                                                                                           |
+|            |                       | "exp_keep" - expected number of fish kept\                                                                                           |
+|            |                       | "expense" - total recreational fishing costs\                                                                                        |
+|            |                       | "keep_one" - probability of a trip with at least one keeper\                                                                         |
+|            |                       | "keep_to_exp" - number of kept fish compared to expected\                                                                            |
+|            |                       | "kept per trip" - number of kept fish per trip\                                                                                      |
+|            |                       | "kept:released" - ratio of number of kept fish to numbers released\                                                                  |
+|            |                       | "minlen" - minimum size limit (inches)\                                                                                              |
+|            |                       | "mulen_keep" - mean length of kept fish\                                                                                             |
+|            |                       | "mulen_release" - mean length of released fish\                                                                                      |
+|            |                       | "not overfished" - probability that the stock is not overfished (i.e P(SSB\>0.5 BMSY) )\                                             |
+|            |                       | "not overfishing" - probability that overfishing is not occurring (i.e. P(F \< FMSY) )\                                              |
+|            |                       | "ntrips" - total number of recreational fishing trips\                                                                               |
+|            |                       | "prop_female" - proportion of the stock that are female fish\                                                                        |
+|            |                       | "rec_removals" - total recreational removals (number of fish)\                                                                       |
+|            |                       | "rel per trip" - number of fish released per trip\                                                                                   |
+|            |                       | "seaslen" - season length (days)\                                                                                                    |
+|            |                       | "spawning biomass" - magnitude of spawning stock biomass\                                                                            |
+|            |                       | "total catch" - total catch (from both commercial and recreational)\                                                                 |
+|            |                       | "trophy" - probability that a trip includes a large 'trophy size' fish.                                                              |
++------------+-----------------------+--------------------------------------------------------------------------------------------------------------------------------------+
+| value      | numeric (real number) | Median (over simulations) value for the performance metric                                                                           |
++------------+-----------------------+--------------------------------------------------------------------------------------------------------------------------------------+
+| StartBBMSY | numeric (real number) | Value for the scenario stock status relative to BMSY at the start of the projection period in the simulations. One of three values:\ |
+|            |                       | 1.0 - (base case, stock starts the simulations around B/BMSY)                                                                        |
+|            |                       |                                                                                                                                      |
+|            |                       | 2.0 - (stock starts above BMSY)                                                                                                      |
+|            |                       |                                                                                                                                      |
+|            |                       | 0.3 - (stock starts close to the overfished limit)                                                                                   |
++------------+-----------------------+--------------------------------------------------------------------------------------------------------------------------------------+
