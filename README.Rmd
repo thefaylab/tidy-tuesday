@@ -35,7 +35,7 @@ Visualize results of the summer flounder MSE using a common results data frame, 
 |            |                       |                                                                                                                                      |
 |            |                       | "bag" - bag limit (number of fish)\                                                                                                  |
 |            |                       | "change_cs" - overall change in consumer surplus\                                                                                    |
-|            |                       | "cs_per_trip" - consumer surplus per trip\                                                                                           |
+|            |                       | "cs_per_trip" - measures the consumer surplus per trip\                                                                                           |
 |            |                       | "exp_keep" - expected number of fish kept\                                                                                           |
 |            |                       | "expense" - total recreational fishing costs\                                                                                        |
 |            |                       | "keep_one" - probability of a trip with at least one keeper\                                                                         |
