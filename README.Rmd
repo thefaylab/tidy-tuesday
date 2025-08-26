@@ -19,6 +19,12 @@ Visualize results of the summer flounder MSE using a common results data frame, 
 +============+=======================+======================================================================================================================================+
 | om         | NA                    | not used                                                                                                                             |
 +------------+-----------------------+--------------------------------------------------------------------------------------------------------------------------------------+
+| RegType    | character             | Description of which regulations were allowed to change during the simulation. One of:\                                              |
+|            |                       | "Bag" - bag limit\                                                                                                                   |
+|            |                       | "Length" - minimum size limit\                                                                                                       |
+|            |                       | "Season" - season length\                                                                                                            |
+|            |                       | "All" - all three of the above                                                                                                       |
++------------+-----------------------+--------------------------------------------------------------------------------------------------------------------------------------+
 | mp         | character             | Management Procedure. One of four candidate MPs:\                                                                                    |
 |            |                       | "BBM" - biomass-based matrix\                                                                                                        |
 |            |                       | "BRP" - biological reference point\                                                                                                  |
