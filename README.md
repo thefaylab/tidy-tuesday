@@ -32,6 +32,16 @@ frame, in `data/MSE_median_metrics.rds`.
 <td>not used</td>
 </tr>
 <tr>
+<td>RegType</td>
+<td>character</td>
+<td>Description of which regulations were allowed to change during the
+simulation. One of:<br />
+“Bag” - bag limit<br />
+“Length” - minimum size limit<br />
+“Season” - season length<br />
+“All” - all three of the above</td>
+</tr>
+<tr>
 <td>mp</td>
 <td>character</td>
 <td>Management Procedure. One of four candidate MPs:<br />
