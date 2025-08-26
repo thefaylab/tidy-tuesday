@@ -1,0 +1,83 @@
+### 2025-08-26 Tidy-Tuesday
+
+Gavin Fay
+
+Heatmap of MSE results to produce a 'waffleplot' to show tradeoffs
+
+
+load libraries
+```{r}
+library(ggplot2)
+library(janitor)
+library(tidyverse)
+library(conflicted)
+conflicts_prefer(dplyr::filter())
+                 
+```
+
+load data
+```{r}
+mse_results <- readRDS("data/MSE_median_metrics.rds") %>% 
+  clean_names()
+#mse_results
+```
+
+
+```{r}
+skimr::skim(mse_results)
+
+mse_results %>% group_by(metric) %>% 
+  summarize(range = list(range(value))) %>% 
+  unnest() %>% 
+  mutate(which = rep(c("min","max"), nrow(.)/2)) %>% 
+  pivot_wider(names_from = which, values_from = range)
+```
+
+
+correlations in metrics
+```{r}
+tempdat <- mse_results %>% 
+  select(-om) %>% 
+  #group_by(reg_type, mp, start_bbmsy) %>% 
+  #nest()
+#tempdat$data[[1]] %>% 
+  pivot_wider(names_from = metric, values_from = value)
+tempdat
+```
+
+
+more data munging
+```{r}
+data_use <- mse_results %>% 
+  ungroup() %>% 
+  select(-om) %>% 
+  filter(start_bbmsy == 1,
+         #reg_type == "All",
+         !metric %in% c("change_cs","cs_per_trip",
+                        "bag",
+                        "expense",
+                        "keep_to_exp",
+                        "minlen",
+                        "mulen_release",
+                        "prop_female",
+                        "rel per trip",
+                        "seaslen")) %>% 
+  group_by(metric) %>% 
+  mutate(value_std = value/max(value, na.rm = TRUE)) 
+```
+
+
+
+basic heatmap
+
+```{r}
+data_use %>% 
+  ggplot() +
+  aes(x = mp, y = metric, fill = value_std) +
+  geom_tile() +
+  coord_flip() +
+  facet_wrap(~reg_type) +
+  #facet_wrap(~start_bbmsy, dir = "v") +
+  theme(axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.5))
+```
+
